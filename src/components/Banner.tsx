@@ -35,7 +35,7 @@ export const Banner = () => {
         return () => clearInterval(ticker);
     }, [text, delta]);
 
-    // initial animation delays
+    // Define initial animation delays
     useEffect(() => {
         const spans = document.querySelectorAll(".bits span");
         spans.forEach((span, index) => {

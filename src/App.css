@@ -22,6 +22,21 @@
     box-sizing: border-box;
 }
 
+/* In progress - maybe some changes  */
+:root {
+    --bg-main: #0b0b0f;
+    --bg-secondary: #11111a;
+    --bg-card: #151520;
+    --text-primary: #f5f5f5;
+    --text-secondary: #a1a1aa;
+    --accent: #5b5bd6;
+    --accent-light: #7a7af0;
+    --accent-dark: #3f3fb3;
+    --accent-1: #5b5bd6;
+    --accent-2: #3b3bb0;
+    --border-color: #3b3bb09a;
+}
+
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 75px;
@@ -142,8 +157,9 @@ span.navbar-text {
     align-items: center;
     justify-content: center;
     line-height: 1;
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    border: 1px solid var(--border-color);
 }
+
 .social-icon a::before {
     content: "";
     width: 42px;
@@ -169,7 +185,8 @@ span.navbar-text {
 .navbar-text button {
     font-weight: 700;
     color: #fff;
-    border: 1px solid #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
     padding: 18px 34px;
     font-size: 18px;
     margin-left: 18px;
@@ -247,24 +264,30 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 /************ Banner Css ************/
+.banner::before {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: #6c63ff;
+    filter: blur(120px);
+    top: 10%;
+    left: 20%;
+    opacity: 0.3;
+}
+
 .banner {
     margin-top: 0;
     padding: 260px 0 100px 0;
-    background-image: url("./assets/img/banner-bg.png");
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
+    background: radial-gradient(circle at 20% 30%, #1a1a2e, #0f0f1a 60%, #000);
+    /* background: linear-gradient(135deg, #0f0f0f, #1c1c2b, #0a0a0a); */
     height: 100vh;
 }
 .banner .tagline {
     font-weight: 700;
     letter-spacing: 0.8px;
     padding: 8px 10px;
-    background: linear-gradient(
-        90.21deg,
-        rgba(170, 54, 124, 0.5) -5.91%,
-        rgba(74, 47, 189, 0.5) 111.58%
-    );
+    background: linear-gradient(90.21deg, var(--accent), var(--accent-dark));
     border: 1px solid rgba(255, 255, 255, 0.5);
     font-size: 20px;
     margin-bottom: 16px;
@@ -319,6 +342,54 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 .txt-rotate > .wrap {
     border-right: 0.08em solid #666;
+}
+
+.bits {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.bits span {
+    color: #8b5cf6;
+    text-shadow: 0 0 8px rgba(139, 92, 246, 0.7);
+}
+
+.bits .zero,
+.bits .one {
+    font-size: 75px;
+    font-weight: lighter;
+    margin: 5px auto;
+}
+
+.bits .zero.default {
+    animation: floatUp 2s ease-out;
+}
+
+.bits .one.default {
+    animation: floatDown 2s ease-out;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0);
+        opacity: 0.3;
+    }
+    100% {
+        transform: translateY(-600px);
+        opacity: 0.3;
+    }
+}
+
+@keyframes floatDown {
+    0% {
+        transform: translateY(0);
+        opacity: 0.3;
+    }
+    100% {
+        transform: translateY(1000px);
+        opacity: 0.3;
+    }
 }
 
 /* skills */
@@ -410,7 +481,8 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     position: absolute;
     width: 0;
     height: 100%;
-    background: linear-gradient(90.21deg, #aa367c -5.91%, #4a2fbd 111.58%);
+    /* background: linear-gradient(90.21deg, #aa367c -5.91%, #4a2fbd 111.58%); */
+    background: linear-gradient(90.21deg, var(--accent), var(--accent-dark));
     top: 0;
     left: 0;
     z-index: -1;
@@ -445,7 +517,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 .proj-imgbx::before {
     content: "";
-    background: linear-gradient(90.21deg, #aa367c -5.91%, #4a2fbd 111.58%);
+    background: linear-gradient(90.21deg, var(--accent), var(--accent-dark));
     opacity: 0.85;
     position: absolute;
     width: 100%;
@@ -493,7 +565,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 /* Contact */
 
 .contact {
-    background: linear-gradient(90.21deg, #aa367c -5.91%, #4a2fbd 111.58%);
+    background: linear-gradient(90.21deg, var(--accent), var(--accent-dark));
     padding: 60px 0 200px 0;
 }
 .contact img {
@@ -598,7 +670,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 .new-email-bx::before {
     content: "";
-    background: linear-gradient(90.21deg, #aa367c -5.91%, #4a2fbd 111.58%);
+    background: linear-gradient(90.21deg, var(--accent), var(--accent-dark));
     border-radius: 20px;
     position: absolute;
     z-index: -1;
@@ -627,7 +699,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     padding: 0 15px;
 }
 .new-email-bx button {
-    background: linear-gradient(90.21deg, #aa367c -5.91%, #4a2fbd 111.58%);
+    background: linear-gradient(90.21deg, var(--accent), var(--accent-dark));
     padding: 20px 65px;
     color: #fff;
     font-weight: 500;

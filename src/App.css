@@ -394,42 +394,159 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 /* skills */
 .skill {
-    padding: 0 0 50px 0;
     position: relative;
+    padding: 120px 0;
+    background: radial-gradient(circle at 80% 20%, #1a1a2e, #0f0f1a 60%, #000);
+}
+.skill::before {
+    content: "";
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    background: var(--accent);
+    filter: blur(120px);
+    top: 30%;
+    right: 20%;
+    opacity: 0.25;
 }
 .skill-bx {
-    background: #151515;
-    border-radius: 64px;
     text-align: center;
     padding: 60px 50px;
-    margin-top: -60px;
 }
 .skill h2 {
-    font-size: 45px;
     font-weight: 700;
+    font-size: 42px;
+    margin-bottom: 10px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
 }
 .skill p {
-    color: #b8b8b8;
     font-size: 18px;
     letter-spacing: 0.8px;
     line-height: 1.5em;
-    margin: 14px 0 75px 0;
+    opacity: 0.7;
+    max-width: 600px;
+    margin: 0 auto 40px;
+    color: var(--text-secondary);
 }
 .skill-slider {
     width: 80%;
     margin: 0 auto;
     position: relative;
+    margin-bottom: 60px;
 }
-.skill-slider .item img {
-    width: 50%;
-    margin: 0 auto 15px auto;
+
+.skill-slider .react-multi-carousel-track {
+    display: flex;
+    align-items: center;
 }
-.background-image-left {
-    top: 28%;
-    position: absolute;
-    bottom: 0;
-    width: 40%;
-    z-index: -4;
+
+.skill-slider .react-multi-carousel-item {
+    transition: all 0.6s ease;
+}
+
+.skill-slider .item {
+    transform: scale(0.9);
+    opacity: 0.7;
+    transition: all 0.4s ease;
+}
+
+.skill-slider .react-multi-carousel-item--active .item {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.skill {
+    position: relative;
+    padding: 100px 0;
+    /* background: radial-gradient(circle at top, #0f0f1a, #000); */
+}
+
+.skill-bx {
+    text-align: center;
+}
+
+.skill-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    padding: 20px 30px;
+    margin: 0 10px;
+    border-radius: 14px;
+    background: rgba(91, 91, 214, 0.05);
+    border: 1px solid rgba(91, 91, 214, 0.2);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.skill-item:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent-light);
+    box-shadow: 0 0 20px rgba(91, 91, 214, 0.3);
+}
+.skill-item h5 {
+    font-size: 18px;
+    margin-bottom: 6px;
+}
+
+.skill-item p {
+    font-size: 13px;
+    opacity: 0.6;
+}
+
+.skill-slider::before {
+    background: linear-gradient(to right, var(--bg-main), transparent);
+}
+
+.skill-slider::after {
+    background: linear-gradient(to left, var(--bg-main), transparent);
+}
+
+.domains {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.domain-card {
+    padding: 25px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+    transition: all 0.3s ease;
+}
+
+.domain-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent);
+    box-shadow: 0 0 25px rgba(91, 91, 214, 0.25);
+}
+.domain-card h4 {
+    margin-bottom: 10px;
+}
+
+.domain-card p {
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+.skill-item {
+    animation: floatSkill 6s ease-in-out infinite;
+}
+
+@keyframes floatSkill {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-6px);
+    }
+    100% {
+        transform: translateY(0);
+    }
 }
 
 /************ Projects Css ************/

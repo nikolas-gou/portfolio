@@ -1,7 +1,6 @@
 import { Container, Row, Col } from "react-bootstrap";
-import { MailchimpForm } from "./MailChimpForm";
-import logo from "../assets/img/logo.svg";
 import { SocialMedia } from "./parts/SocialMedia";
+import { Logo } from "./Logo";
 
 export const Footer = () => {
     return (
@@ -9,13 +8,20 @@ export const Footer = () => {
             <Container>
                 <Row className="align-items-center">
                     <Col size={12} sm={6}>
-                        <img src={logo} alt="Logo" />
+                        <Logo />
                     </Col>
-                    <Col size={12} sm={6} className="text-center text-sm-end">
-                        <SocialMedia />
-                        <p>Copyright 2026. All Rights Reserved</p>
+                    <Col className="footer-right">
+                        <div className="social-center">
+                            <SocialMedia />
+                        </div>
                     </Col>
                 </Row>
+                <div className="footer-text">
+                    <p>
+                        © 2026 All Rights Reserved — Developed by Nikolaos
+                        Gkouziotis
+                    </p>
+                </div>
             </Container>
         </footer>
     );

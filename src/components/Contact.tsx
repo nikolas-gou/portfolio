@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import contactImg from "../assets/img/contact-img.svg";
 import "animate.css";
@@ -18,6 +18,16 @@ export const Contact = () => {
         message: "",
         success: false,
     });
+
+    useEffect(() => {
+        if (status.message) {
+            const timer = setTimeout(() => {
+                setStatus({ message: "", success: false });
+            }, 3000);
+
+            return () => clearTimeout(timer);
+        }
+    }, [status]);
 
     const onFormUpdate = (category: string, value: string) => {
         setFormDetails({
@@ -84,12 +94,8 @@ export const Contact = () => {
                                 >
                                     <h2>Get In Touch</h2>
                                     <form onSubmit={handleSubmit}>
-                                        <Row>
-                                            <Col
-                                                size={12}
-                                                sm={6}
-                                                className="px-1"
-                                            >
+                                        <Row className="g-3">
+                                            <Col size={12} sm={6}>
                                                 <input
                                                     type="text"
                                                     value={
@@ -172,18 +178,20 @@ export const Contact = () => {
                                                 </button>
                                             </Col>
                                             {status.message && (
-                                                <Col>
-                                                    <p
-                                                        className={
-                                                            status.success ===
-                                                            false
-                                                                ? "danger"
-                                                                : "success"
-                                                        }
-                                                    >
-                                                        {status.message}
-                                                    </p>
-                                                </Col>
+                                                <div
+                                                    className={`form-status ${
+                                                        status.success
+                                                            ? "success"
+                                                            : "error"
+                                                    }`}
+                                                >
+                                                    <span className="status-icon">
+                                                        {status.success
+                                                            ? "✓"
+                                                            : "✕"}
+                                                    </span>
+                                                    <p>{status.message}</p>
+                                                </div>
                                             )}
                                         </Row>
                                     </form>

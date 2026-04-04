@@ -36,6 +36,7 @@ https://reactanimatedportfolio.vercel.app/
 
 ## 📂 Project Structure
 
+```
 src/
 ├── components/
 │   ├── Navbar.js
@@ -47,7 +48,7 @@ src/
 ├── assets/
 ├── App.js
 └── index.js
-
+```
 ---
 
 ## ⚙️ Installation & Setup

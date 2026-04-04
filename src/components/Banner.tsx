@@ -3,6 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { ArrowRightCircle } from "react-bootstrap-icons";
 import "animate.css";
 import TrackVisibility from "react-on-screen";
+import { HashLink } from "react-router-hash-link";
 
 export const Banner = () => {
     const [loopNum, setLoopNum] = useState(0);
@@ -140,12 +141,18 @@ export const Banner = () => {
                                         optimized performance and maintainable
                                         code.
                                     </p>
-                                    <button
-                                        onClick={() => console.log("connect")}
-                                    >
-                                        Let’s Connect{" "}
-                                        <ArrowRightCircle size={25} />
-                                    </button>
+
+                                    <HashLink to="#connect">
+                                        {" "}
+                                        <button
+                                            onClick={() =>
+                                                console.log("connect")
+                                            }
+                                        >
+                                            Let’s Connect{" "}
+                                            <ArrowRightCircle size={25} />
+                                        </button>
+                                    </HashLink>
                                 </div>
                             )}
                         </TrackVisibility>

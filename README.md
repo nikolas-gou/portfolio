@@ -1,73 +1,104 @@
-# React + TypeScript + Vite
+# 💼 Nikolas Gou – Portfolio Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive personal portfolio website built with React.
+This project showcases my technical skills, featured projects, and provides a functional contact form for direct communication.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Live Demo
 
-## React Compiler
+https://reactanimatedportfolio.vercel.app/
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+* React.js
+* React-Bootstrap
+* JavaScript (ES6+)
+* CSS3 / Custom Styling
+* Node.js & Express
+* Nodemailer (Email handling)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## ✨ Features
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+* 🧑‍💻 About Me section
+* 🛠️ Skills slider / carousel
+* 📁 Projects showcase
+* 📩 Functional contact form (email sending)
+* 🌐 Social media integration
+* 📱 Fully responsive design
+* ⚡ Smooth UI interactions
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 📂 Project Structure
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+src/
+├── components/
+│   ├── Navbar.js
+│   ├── Banner.js
+│   ├── Skills.js
+│   ├── Projects.js
+│   ├── Contact.js
+│   └── Footer.js
+├── assets/
+├── App.js
+└── index.js
+
+---
+
+## ⚙️ Installation & Setup
+
+Clone the repository:
+
+git clone https://github.com/nikolas-gou/portfolio.git
+cd portfolio
+
+Install dependencies:
+
+npm install
+
+Run the frontend:
+
+npm start
+
+---
+
+## 📧 Contact Form Setup (Backend)
+
+Create a `.env` file in the root directory and add:
+
+EMAIL_USER=your_email
+EMAIL_PASS=your_password
+
+Start the backend server:
+
+node server.js
+
+---
+
+## 🎨 Customization
+
+You can easily customize:
+
+* Content (texts, sections)
+* Images & assets
+* Colors & styling (CSS)
+* Social media links
+* Projects data
+
+---
+
+## 📈 Future Improvements
+
+* Dark / Light mode toggle
+* Animations with Framer Motion
+* Blog section
+* CMS integration
+* SEO optimization
+* Responsive UI
+
+---

@@ -784,7 +784,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 .footer {
-    padding: 60px 0 50px;
+    padding: 20px 0 20px;
     background-color: #0b0b0f;
     background-image: url("./assets/img/footer-bg.png");
     background-position: center center;
@@ -814,25 +814,6 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     letter-spacing: 0.5px;
     margin-top: 20px;
     z-index: 1;
-}
-.footer-right {
-    position: relative;
-    height: 100%;
-}
-
-.social-center {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-}
-
-.footer-text {
-    position: absolute;
-    padding: 0;
-    margin: 0;
-    bottom: 0;
-    right: 1%;
 }
 
 .logo-container {

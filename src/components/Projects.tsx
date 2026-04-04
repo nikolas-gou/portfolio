@@ -10,7 +10,11 @@ export const Projects = () => {
     const projects = [
         {
             title: "ThesisGate.net",
-            description: `Full-stack platform for managing thesis workflows, authentication, and role-based access.`,
+            description: `
+                        Web application for managing thesis workflows between students and instructors, 
+                        supporting thesis submission, supervisor management, and workflow tracking. Implemented React 
+                        frontend with authentication flows and protected routes, integrating REST APIs with JWT-based 
+                        authentication and role-based access control.`,
             imgUrl: projImg1,
             skills: [
                 { name: "JS", img: "" },

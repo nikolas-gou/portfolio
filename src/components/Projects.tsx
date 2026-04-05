@@ -11,7 +11,7 @@ import { useState } from "react";
 
 export const Projects = () => {
     const { isMobile } = useBreakpoint();
-    const [currentSlide, setCurrentSlide] = useState(0);
+    const [_currentSlide, setCurrentSlide] = useState(0);
 
     const projects = [
         {

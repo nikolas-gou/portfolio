@@ -873,6 +873,133 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     z-index: -4;
 }
 
+/* Skills Responsive Phone */
+@media only screen and (max-width: 768px) {
+    .project h2 {
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 10px;
+        letter-spacing: 0.8px;
+        text-align: center;
+    }
+    .project p {
+        font-size: 14px;
+        letter-spacing: 0.4px;
+        line-height: 1.5em;
+        opacity: 0.7;
+        max-width: 600px;
+        margin: 0 auto 40px;
+        color: var(--text-secondary);
+        text-align: center;
+    }
+    .project-boxes {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+
+    .project-slider {
+        width: 80%;
+        margin: 0 auto;
+        position: relative;
+        margin-bottom: 60px;
+    }
+
+    .project-slider .react-multi-carousel-track {
+        display: flex;
+        align-items: center;
+    }
+
+    .project-slider .react-multi-carousel-item {
+        transition: all 0.6s ease;
+        padding: 0 6px; /* spacing */
+        box-sizing: border-box;
+        margin: 0;
+    }
+
+    .project-slider .item {
+        transform: scale(0.9);
+        opacity: 0.7;
+        transition: all 0.4s ease;
+    }
+
+    .project-slider .react-multi-carousel-item--active .item {
+        transform: scale(1);
+        opacity: 1;
+    }
+    .react-multi-carousel-dot-list {
+        bottom: -35px;
+    }
+
+    .react-multi-carousel-dot button {
+        background: #444;
+    }
+
+    .react-multi-carousel-dot--active button {
+        background: #5b5bd6;
+    }
+
+    .project-card {
+        height: 375px;
+        width: 100%;
+        overflow-y: scroll;
+        text-align: center;
+        padding: 20px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        backdrop-filter: blur(12px);
+        transition: all 0.3s ease;
+    }
+
+    .project-card:hover {
+        transform: translateY(-8px);
+        border-color: var(--accent);
+        box-shadow: 0 0 25px rgba(91, 91, 214, 0.25);
+    }
+    .project-card h4 {
+        margin-bottom: 10px;
+        font-size: 18px;
+    }
+
+    .project-card p {
+        font-size: 12px;
+        opacity: 0.7;
+    }
+    .project-skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 15px;
+    }
+
+    .skill-tag {
+        font-size: 10px;
+        padding: 3px 6px;
+        border-radius: 999px;
+
+        background: rgba(91, 91, 214, 0.1);
+        border: 1px solid rgba(91, 91, 214, 0.3);
+
+        color: var(--accent-light);
+
+        transition: 0.2s ease;
+    }
+
+    .skill-tag:hover {
+        background: rgba(91, 91, 214, 0.2);
+        border-color: var(--accent);
+    }
+    .background-image-right {
+        top: 20%;
+        position: absolute;
+        bottom: 0;
+        width: 35%;
+        right: 0;
+        z-index: -4;
+    }
+}
+
 /* Contact */
 
 .contact {

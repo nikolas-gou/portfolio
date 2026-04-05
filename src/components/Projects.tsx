@@ -5,8 +5,14 @@ import projImg3 from "../assets/img/project-img3.png";
 import colorSharp2 from "../assets/img/color-sharp2.png";
 import "animate.css";
 import TrackVisibility from "react-on-screen";
+import { useBreakpoint } from "../hooks/useBreakpoint";
+import Carousel from "react-multi-carousel";
+import { useState } from "react";
 
 export const Projects = () => {
+    const { isMobile } = useBreakpoint();
+    const [currentSlide, setCurrentSlide] = useState(0);
+
     const projects = [
         {
             title: "ThesisGate.net",
@@ -68,6 +74,11 @@ export const Projects = () => {
             ],
         },
     ];
+    const responsive = {
+        desktop: { breakpoint: { max: 3000, min: 1024 }, items: 4 },
+        tablet: { breakpoint: { max: 1024, min: 464 }, items: 2 },
+        mobile: { breakpoint: { max: 464, min: 0 }, items: 2 },
+    };
 
     return (
         <section className="project" id="projects">
@@ -79,8 +90,8 @@ export const Projects = () => {
                                 <div
                                     className={
                                         isVisible
-                                            ? "animate__animated animate__fadeIn"
-                                            : ""
+                                            ? "animate__animated animate__fadeIn project-bx"
+                                            : "project-bx"
                                     }
                                 >
                                     <h2>Projects</h2>
@@ -93,31 +104,97 @@ export const Projects = () => {
                                     </p>
 
                                     <Row>
-                                        <div className="project-boxes">
-                                            {projects.map((project, i) => (
-                                                <div
-                                                    className="project-card"
-                                                    key={i}
-                                                >
-                                                    <h4>{project.title}</h4>
-
-                                                    <p>{project.description}</p>
-
-                                                    <div className="project-skills">
-                                                        {project.skills.map(
-                                                            (skill, idx) => (
-                                                                <span
-                                                                    key={idx}
-                                                                    className="skill-tag"
-                                                                >
-                                                                    {skill.name}
-                                                                </span>
-                                                            ),
-                                                        )}
+                                        {isMobile ? (
+                                            <Carousel
+                                                responsive={responsive}
+                                                infinite
+                                                customTransition="transform 6000ms linear"
+                                                arrows={false}
+                                                showDots={true}
+                                                pauseOnHover
+                                                draggable
+                                                swipeable
+                                                className="project-slider"
+                                                afterChange={(
+                                                    previousSlide,
+                                                    { currentSlide },
+                                                ) => {
+                                                    setCurrentSlide(
+                                                        currentSlide,
+                                                    );
+                                                }}
+                                            >
+                                                {projects.map((project, i) => (
+                                                    <div
+                                                        className="project-card"
+                                                        key={i}
+                                                    >
+                                                        <h4>{project.title}</h4>
+                                                        <p>
+                                                            {
+                                                                project.description
+                                                            }
+                                                        </p>
+                                                        <div className="project-skills">
+                                                            {project.skills.map(
+                                                                (
+                                                                    skill,
+                                                                    idx,
+                                                                ) => (
+                                                                    <span
+                                                                        key={
+                                                                            idx
+                                                                        }
+                                                                        className="skill-tag"
+                                                                    >
+                                                                        {
+                                                                            skill.name
+                                                                        }
+                                                                    </span>
+                                                                ),
+                                                            )}
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            ))}
-                                        </div>
+                                                ))}
+                                            </Carousel>
+                                        ) : (
+                                            <div className="project-boxes">
+                                                {projects.map((project, i) => (
+                                                    <div
+                                                        className="project-card"
+                                                        key={i}
+                                                    >
+                                                        <h4>{project.title}</h4>
+
+                                                        <p>
+                                                            {
+                                                                project.description
+                                                            }
+                                                        </p>
+
+                                                        <div className="project-skills">
+                                                            {project.skills.map(
+                                                                (
+                                                                    skill,
+                                                                    idx,
+                                                                ) => (
+                                                                    <span
+                                                                        key={
+                                                                            idx
+                                                                        }
+                                                                        className="skill-tag"
+                                                                    >
+                                                                        {
+                                                                            skill.name
+                                                                        }
+                                                                    </span>
+                                                                ),
+                                                            )}
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        )}
                                     </Row>
                                 </div>
                             )}

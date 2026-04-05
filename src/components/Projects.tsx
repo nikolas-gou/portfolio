@@ -115,10 +115,7 @@ export const Projects = () => {
                                                 draggable
                                                 swipeable
                                                 className="project-slider"
-                                                afterChange={(
-                                                    previousSlide,
-                                                    { currentSlide },
-                                                ) => {
+                                                afterChange={(currentSlide) => {
                                                     setCurrentSlide(
                                                         currentSlide,
                                                     );

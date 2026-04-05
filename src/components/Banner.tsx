@@ -4,6 +4,7 @@ import { ArrowRightCircle } from "react-bootstrap-icons";
 import "animate.css";
 import TrackVisibility from "react-on-screen";
 import { HashLink } from "react-router-hash-link";
+import { useBreakpoint } from "../hooks/useBreakpoint";
 
 export const Banner = () => {
     const [loopNum, setLoopNum] = useState(0);
@@ -22,6 +23,7 @@ export const Banner = () => {
         { id: 7, value: 0, x: 0, y: 0, fontSize: 75 },
         { id: 8, value: 1, x: 0, y: 0, fontSize: 75 },
     ]);
+    const { isDesktop } = useBreakpoint();
 
     const toRotate = [
         "Software Engineer",
@@ -157,45 +159,50 @@ export const Banner = () => {
                             )}
                         </TrackVisibility>
                     </Col>
-                    <Col xs={12} md={6} xl={5}>
-                        <TrackVisibility>
-                            {({ isVisible }) => (
-                                <div
-                                    className={
-                                        isVisible
-                                            ? "animate__animated animate__zoomIn bits"
-                                            : "bits"
-                                    }
-                                    onMouseEnter={handleMouseEnter}
-                                    onMouseLeave={handleMouseLeave}
-                                >
-                                    {bits.map((bit) => (
-                                        <span
-                                            key={bit.id}
-                                            className={`
+                    {isDesktop && (
+                        <Col xs={12} md={6} xl={5}>
+                            <TrackVisibility>
+                                {({ isVisible }) => (
+                                    <div
+                                        className={
+                                            isVisible
+                                                ? "animate__animated animate__zoomIn bits"
+                                                : "bits"
+                                        }
+                                        onMouseEnter={handleMouseEnter}
+                                        onMouseLeave={handleMouseLeave}
+                                    >
+                                        {bits.map((bit) => (
+                                            <span
+                                                key={bit.id}
+                                                className={`
                                                 ${bit.value === 0 ? "zero" : "one"}
                                                 ${bits.length == 8 ? "default" : ""}
                                             `}
-                                            style={{
-                                                transform: `translate(${bit.x}px, ${bit.y}px)`,
-                                                opacity:
-                                                    bits.length > 8 ? 0.3 : 1,
-                                                fontSize: `${bit.fontSize}px`,
-                                                transition:
-                                                    "transform 1.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease, font-size 0.8s ease",
-                                                animation:
-                                                    bit.x !== 0 || bit.y !== 0
-                                                        ? "none"
-                                                        : undefined,
-                                            }}
-                                        >
-                                            {bit.value}
-                                        </span>
-                                    ))}
-                                </div>
-                            )}
-                        </TrackVisibility>
-                    </Col>
+                                                style={{
+                                                    transform: `translate(${bit.x}px, ${bit.y}px)`,
+                                                    opacity:
+                                                        bits.length > 8
+                                                            ? 0.3
+                                                            : 1,
+                                                    fontSize: `${bit.fontSize}px`,
+                                                    transition:
+                                                        "transform 1.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease, font-size 0.8s ease",
+                                                    animation:
+                                                        bit.x !== 0 ||
+                                                        bit.y !== 0
+                                                            ? "none"
+                                                            : undefined,
+                                                }}
+                                            >
+                                                {bit.value}
+                                            </span>
+                                        ))}
+                                    </div>
+                                )}
+                            </TrackVisibility>
+                        </Col>
+                    )}
                 </Row>
             </Container>
         </section>

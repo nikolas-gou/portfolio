@@ -3,6 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import contactImg from "../assets/img/contact-img.svg";
 import "animate.css";
 import TrackVisibility from "react-on-screen";
+import { useBreakpoint } from "../hooks/useBreakpoint";
 
 export const Contact = () => {
     const formInitialDetails = {
@@ -18,7 +19,7 @@ export const Contact = () => {
         message: "",
         success: false,
     });
-
+    const { isMobile } = useBreakpoint();
     useEffect(() => {
         if (status.message) {
             const timer = setTimeout(() => {
@@ -67,21 +68,24 @@ export const Contact = () => {
         <section className="contact" id="connect">
             <Container>
                 <Row className="align-items-center">
-                    <Col size={12} md={6}>
-                        <TrackVisibility>
-                            {({ isVisible }) => (
-                                <img
-                                    className={
-                                        isVisible
-                                            ? "animate__animated animate__zoomIn"
-                                            : ""
-                                    }
-                                    src={contactImg}
-                                    alt="Contact Us"
-                                />
-                            )}
-                        </TrackVisibility>
-                    </Col>
+                    {!isMobile && (
+                        <Col size={12} md={6}>
+                            <TrackVisibility>
+                                {({ isVisible }) => (
+                                    <img
+                                        className={
+                                            isVisible
+                                                ? "animate__animated animate__zoomIn"
+                                                : ""
+                                        }
+                                        src={contactImg}
+                                        alt="Contact Us"
+                                    />
+                                )}
+                            </TrackVisibility>
+                        </Col>
+                    )}
+
                     <Col size={12} md={6}>
                         <TrackVisibility>
                             {({ isVisible }) => (

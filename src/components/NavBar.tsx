@@ -3,10 +3,17 @@ import { Navbar, Nav, Container } from "react-bootstrap";
 import { HashLink } from "react-router-hash-link";
 import { SocialMedia } from "./parts/SocialMedia";
 import { Logo } from "./Logo";
+import { useActiveSection } from "../hooks/useActiveSection";
 
 export const NavBar = () => {
-    const [activeLink, setActiveLink] = useState("home");
     const [scrolled, setScrolled] = useState(false);
+
+    const navItems = [
+        { id: "home", label: "Home" },
+        { id: "skills", label: "Skills" },
+        { id: "projects", label: "Projects" },
+    ];
+    const activeSection = useActiveSection(navItems.map((item) => item.id));
 
     useEffect(() => {
         const onScroll = () => {
@@ -22,10 +29,6 @@ export const NavBar = () => {
         return () => window.removeEventListener("scroll", onScroll);
     }, []);
 
-    const onUpdateActiveLink = (value: string) => {
-        setActiveLink(value);
-    };
-
     return (
         <Navbar expand="lg" className={scrolled ? "scrolled" : ""}>
             <Container>
@@ -37,39 +40,19 @@ export const NavBar = () => {
                 </Navbar.Toggle>
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto">
-                        <Nav.Link
-                            href="#home"
-                            className={
-                                activeLink === "home"
-                                    ? "active navbar-link"
-                                    : "navbar-link"
-                            }
-                            onClick={() => onUpdateActiveLink("home")}
-                        >
-                            Home
-                        </Nav.Link>
-                        <Nav.Link
-                            href="#skills"
-                            className={
-                                activeLink === "skills"
-                                    ? "active navbar-link"
-                                    : "navbar-link"
-                            }
-                            onClick={() => onUpdateActiveLink("skills")}
-                        >
-                            Skills
-                        </Nav.Link>
-                        <Nav.Link
-                            href="#projects"
-                            className={
-                                activeLink === "projects"
-                                    ? "active navbar-link"
-                                    : "navbar-link"
-                            }
-                            onClick={() => onUpdateActiveLink("projects")}
-                        >
-                            Projects
-                        </Nav.Link>
+                        {navItems.map((item) => (
+                            <Nav.Link
+                                key={item.id}
+                                href={`#${item.id}`}
+                                className={
+                                    activeSection === item.id
+                                        ? "active navbar-link"
+                                        : "navbar-link"
+                                }
+                            >
+                                {item.label}
+                            </Nav.Link>
+                        ))}
                     </Nav>
                     <span className="navbar-text">
                         <SocialMedia />{" "}

@@ -979,7 +979,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 .logo-container {
     display: flex;
     flex-direction: column;
-    align-items: self-start;
+    align-items: flex-start;
     cursor: pointer;
     user-select: none;
 }

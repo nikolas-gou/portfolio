@@ -40,7 +40,7 @@ export const Skills = () => {
     ];
 
     return (
-        <section className="skill" id="skills">
+        <section className="skill glow-orb" id="skills">
             <Container>
                 <Row>
                     <Col>

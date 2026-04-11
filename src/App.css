@@ -15,15 +15,6 @@
     font-weight: 400;
 }
 
-/* Utility Class */
-.glow-orb::before {
-    content: "";
-    position: absolute;
-    background: var(--accent);
-    filter: blur(120px);
-    opacity: 0.25;
-}
-
 /************ Default Css ************/
 * {
     margin: 0;
@@ -68,6 +59,15 @@
     --z-overlay: 10;
     --z-navbar: 100;
     --z-modal: 1000;
+}
+
+/* Utility Class */
+.glow-orb::before {
+    content: "";
+    position: absolute;
+    background: var(--accent);
+    filter: blur(120px);
+    opacity: 0.25;
 }
 
 html {
@@ -494,15 +494,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 .skill-slider .react-multi-carousel-item {
-    transition: all var(--transition-carousel) ease;
-}
-
-.skill-slider .item {
-    transform: scale(0.9);
-    width: 1000px;
-    height: 1000px;
-    opacity: 0.7;
-    transition: all 0.4s ease;
+    transition: transform var(--transition-carousel) ease;
 }
 
 .skill-slider .react-multi-carousel-item--active .item {
@@ -522,7 +514,11 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     background: var(--accent-5);
     border: 1px solid var(--accent-20);
     backdrop-filter: blur(10px);
-    transition: all var(--transition-base) ease;
+    transition:
+        transform var(--transition-base) ease,
+        border-color var(--transition-base) ease,
+        box-shadow var(--transition-base) ease;
+    animation: floatSkill 6s ease-in-out infinite;
 }
 
 .skill-item:hover {
@@ -560,7 +556,10 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.06);
     backdrop-filter: blur(12px);
-    transition: all var(--transition-base) ease;
+    transition:
+        transform var(--transition-base) ease,
+        border-color var(--transition-base) ease,
+        box-shadow var(--transition-base) ease;
 }
 
 .domain-card:hover {
@@ -575,10 +574,6 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 .domain-card p {
     font-size: 14px;
     opacity: 0.7;
-}
-
-.skill-item {
-    animation: floatSkill 6s ease-in-out infinite;
 }
 
 /* Skills Responsive Phone */
@@ -687,7 +682,10 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.06);
     backdrop-filter: blur(12px);
-    transition: all var(--transition-base) ease;
+    transition:
+        transform var(--transition-base) ease,
+        border-color var(--transition-base) ease,
+        box-shadow var(--transition-base) ease;
 }
 
 .project-card:hover {
@@ -874,7 +872,9 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     color: #fff;
     font-weight: 600;
     letter-spacing: 0.5px;
-    transition: all var(--transition-base) ease;
+    transition:
+        transform var(--transition-base) ease,
+        box-shadow var(--transition-base) ease;
 }
 .contact form button:hover {
     transform: translateY(-2px);

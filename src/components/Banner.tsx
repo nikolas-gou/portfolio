@@ -106,7 +106,7 @@ export const Banner = () => {
     };
 
     return (
-        <section className="banner" id="home">
+        <section className="banner glow-orb" id="home">
             <Container>
                 <Row className="aligh-items-center">
                     <Col xs={12} md={6} xl={7}>

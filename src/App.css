@@ -15,6 +15,15 @@
     font-weight: 400;
 }
 
+/* Utility Class */
+.glow-orb::before {
+    content: "";
+    position: absolute;
+    background: var(--accent);
+    filter: blur(120px);
+    opacity: 0.25;
+}
+
 /************ Default Css ************/
 * {
     margin: 0;
@@ -26,15 +35,39 @@
 :root {
     --bg-main: #0b0b0f;
     --bg-secondary: #11111a;
+    --bg-body: #121212;
     --bg-card: #151520;
+    /* text */
     --text-primary: #f5f5f5;
     --text-secondary: #a1a1aa;
+    --text-muted: #b8b8b8;
     --accent: #5b5bd6;
     --accent-light: #7a7af0;
     --accent-dark: #3f3fb3;
-    --accent-1: #5b5bd6;
     --accent-2: #3b3bb0;
     --border-color: #3b3bb09a;
+    --accent-5: color-mix(in srgb, var(--accent) 5%, transparent);
+    --accent-10: color-mix(in srgb, var(--accent) 10%, transparent);
+    --accent-20: color-mix(in srgb, var(--accent) 20%, transparent);
+    --accent-30: color-mix(in srgb, var(--accent) 30%, transparent);
+    --accent-40: color-mix(in srgb, var(--accent) 40%, transparent);
+    --accent-50: color-mix(in srgb, var(--accent) 50%, transparent);
+    --accent-60: color-mix(in srgb, var(--accent) 60%, transparent);
+    --accent-70: color-mix(in srgb, var(--accent) 70%, transparent);
+    --accent-80: color-mix(in srgb, var(--accent) 80%, transparent);
+    --accent-90: color-mix(in srgb, var(--accent) 90%, transparent);
+
+    /* transitions */
+    --transition-fast: 0.2s;
+    --transition-base: 0.3s;
+    --transition-slow: 0.5s;
+    --transition-carousel: 0.6s;
+    /* z-index */
+    --z-below: -1;
+    --z-base: 1;
+    --z-overlay: 10;
+    --z-navbar: 100;
+    --z-modal: 1000;
 }
 
 html {
@@ -51,7 +84,7 @@ body {
     font-weight: 400;
     overflow-x: hidden;
     position: relative;
-    background-color: #121212 !important;
+    background-color: var(--bg-body) !important;
     color: #fff !important;
     font-family: "Centra", sans-serif !important;
 }
@@ -118,12 +151,12 @@ nav.navbar {
     position: fixed;
     width: 100%;
     top: 0;
-    z-index: 9999;
-    transition: 0.32s ease-in-out;
+    z-index: var(--z-navbar);
+    transition: var(--transition-base) ease-in-out;
 }
 nav.navbar.scrolled {
     padding: 0px 0;
-    background-color: #121212;
+    background-color: var(--bg-body);
 }
 nav.navbar a.navbar-brand {
     width: 9%;
@@ -169,15 +202,15 @@ span.navbar-text {
     background-color: #ffffff;
     border-radius: 50%;
     transform: scale(0);
-    transition: 0.3s ease-in-out;
+    transition: var(--transition-base) ease-in-out;
 }
 .social-icon a:hover::before {
     transform: scale(1);
 }
 .social-icon a img {
     width: 40%;
-    z-index: 1;
-    transition: 0.3s ease-in-out;
+    z-index: var(--z-base);
+    transition: var(--transition-base) ease-in-out;
 }
 .social-icon a:hover img {
     filter: brightness(0) saturate(100%) invert(0%) sepia(7%) saturate(98%)
@@ -193,10 +226,10 @@ span.navbar-text {
     margin-left: 18px;
     position: relative;
     background-color: transparent;
-    transition: 0.3s ease-in-out;
+    transition: var(--transition-base) ease-in-out;
 }
 .navbar-text button span {
-    z-index: 1;
+    z-index: var(--z-base);
 }
 .navbar-text button::before {
     content: "";
@@ -206,11 +239,11 @@ span.navbar-text {
     background-color: #fff;
     left: 0;
     top: 0;
-    z-index: -1;
-    transition: 0.3s ease-in-out;
+    z-index: var(--z-below);
+    transition: var(--transition-base) ease-in-out;
 }
 .navbar-text button:hover {
-    color: #121212;
+    color: var(--bg-body);
 }
 .navbar-text button:hover::before {
     content: "";
@@ -266,15 +299,10 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 /************ Banner Css ************/
 .banner::before {
-    content: "";
-    position: absolute;
     width: 300px;
     height: 300px;
-    background: #6c63ff;
-    filter: blur(120px);
     top: 10%;
     left: 20%;
-    opacity: 0.3;
 }
 
 .banner {
@@ -303,7 +331,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     display: block;
 }
 .banner p {
-    color: #b8b8b8;
+    color: var(--text-muted);
     font-size: 18px;
     letter-spacing: 0.8px;
     line-height: 1.5em;
@@ -321,7 +349,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 .banner button svg {
     font-size: 25px;
     margin-left: 10px;
-    transition: 0.3s ease-in-out;
+    transition: var(--transition-base) ease-in-out;
     line-height: 1;
 }
 .banner button:hover svg {
@@ -429,15 +457,10 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     background: radial-gradient(circle at 80% 20%, #1a1a2e, #0f0f1a 60%, #000);
 }
 .skill::before {
-    content: "";
-    position: absolute;
     width: 250px;
     height: 250px;
-    background: var(--accent);
-    filter: blur(120px);
     top: 30%;
     right: 20%;
-    opacity: 0.25;
 }
 .skill-bx {
     text-align: center;
@@ -471,11 +494,13 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 .skill-slider .react-multi-carousel-item {
-    transition: all 0.6s ease;
+    transition: all var(--transition-carousel) ease;
 }
 
 .skill-slider .item {
     transform: scale(0.9);
+    width: 1000px;
+    height: 1000px;
     opacity: 0.7;
     transition: all 0.4s ease;
 }
@@ -494,16 +519,16 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     padding: 20px 30px;
     margin: 0 10px;
     border-radius: 14px;
-    background: rgba(91, 91, 214, 0.05);
-    border: 1px solid rgba(91, 91, 214, 0.2);
+    background: var(--accent-5);
+    border: 1px solid var(--accent-20);
     backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
+    transition: all var(--transition-base) ease;
 }
 
 .skill-item:hover {
     transform: translateY(-6px);
     border-color: var(--accent-light);
-    box-shadow: 0 0 20px rgba(91, 91, 214, 0.3);
+    box-shadow: 0 0 20px var(--accent-30);
 }
 .skill-item h5 {
     font-size: 18px;
@@ -535,13 +560,13 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.06);
     backdrop-filter: blur(12px);
-    transition: all 0.3s ease;
+    transition: all var(--transition-base) ease;
 }
 
 .domain-card:hover {
     transform: translateY(-8px);
     border-color: var(--accent);
-    box-shadow: 0 0 25px rgba(91, 91, 214, 0.25);
+    box-shadow: 0 0 25px var(--accent-30);
 }
 .domain-card h4 {
     margin-bottom: 10px;
@@ -621,15 +646,10 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 .project::before {
-    content: "";
-    position: absolute;
     width: 250px;
     height: 250px;
-    background: var(--accent);
-    filter: blur(120px);
     top: 30%;
     right: 20%;
-    opacity: 0.25;
 }
 .project h2 {
     font-size: 42px;
@@ -667,13 +687,13 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.06);
     backdrop-filter: blur(12px);
-    transition: all 0.3s ease;
+    transition: all var(--transition-base) ease;
 }
 
 .project-card:hover {
     transform: translateY(-8px);
     border-color: var(--accent);
-    box-shadow: 0 0 25px rgba(91, 91, 214, 0.25);
+    box-shadow: 0 0 25px var(--accent-30);
 }
 .project-card h4 {
     margin-bottom: 10px;
@@ -695,16 +715,16 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     padding: 6px 12px;
     border-radius: 999px;
 
-    background: rgba(91, 91, 214, 0.1);
-    border: 1px solid rgba(91, 91, 214, 0.3);
+    background: var(--accent-10);
+    border: 1px solid var(--accent-30);
 
     color: var(--accent-light);
 
-    transition: 0.2s ease;
+    transition: var(--transition-base) ease;
 }
 
 .skill-tag:hover {
-    background: rgba(91, 91, 214, 0.2);
+    background: var(--accent-20);
     border-color: var(--accent);
 }
 .background-image-right {
@@ -740,12 +760,12 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     }
 
     .project-slider .react-multi-carousel-item {
-        transition: all 0.6s ease;
-        padding: 0 6px; /* spacing */
+        transition: all var(--transition-carousel) ease;
+        padding: 0 6px;
         box-sizing: border-box;
         margin: 0;
     }
-
+    /* ** ? */
     .project-slider .item {
         transform: scale(0.9);
         opacity: 0.7;
@@ -765,7 +785,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     }
 
     .react-multi-carousel-dot--active button {
-        background: #5b5bd6;
+        background: var(--accent);
     }
 
     .project-card {
@@ -796,15 +816,10 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     background: radial-gradient(circle at 30% 20%, #1a1a2e, #0f0f1a 60%, #000);
 }
 .contact::before {
-    content: "";
-    position: absolute;
     width: 300px;
     height: 300px;
-    background: var(--accent);
-    filter: blur(140px);
     top: 20%;
     left: 10%;
-    opacity: 0.25;
 }
 .contact h2 {
     font-size: 42px;
@@ -833,13 +848,13 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     color: #fff;
     padding: 16px 20px;
     font-size: 15px;
-    transition: all 0.25s ease;
+    transition: all var(--transition-base) ease;
 }
 .contact form input:focus,
 .contact form textarea:focus {
     outline: none;
     border-color: var(--accent);
-    box-shadow: 0 0 0 2px rgba(91, 91, 214, 0.3);
+    box-shadow: 0 0 0 2px var(--accent-30);
 }
 .contact form input::placeholder,
 .contact form textarea::placeholder {
@@ -859,17 +874,17 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     color: #fff;
     font-weight: 600;
     letter-spacing: 0.5px;
-    transition: all 0.3s ease;
+    transition: all var(--transition-base) ease;
 }
 .contact form button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 0 20px rgba(91, 91, 214, 0.6);
+    box-shadow: 0 0 20px var(--accent-60);
 }
 .contact form button:active {
     transform: scale(0.97);
 }
 .contact form button span {
-    z-index: 1;
+    z-index: var(--z-base);
     position: relative;
 }
 .form-status {
@@ -938,7 +953,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 .footer {
     padding: 20px 0 20px;
-    background-color: #0b0b0f;
+    background-color: var(--bg-main);
     background-image: url("./assets/img/footer-bg.png");
     background-position: center center;
     background-size: cover;
@@ -953,7 +968,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     position: absolute;
     width: 400px;
     height: 400px;
-    background: rgba(91, 91, 214, 0.2);
+    background: var(--accent-20);
     filter: blur(140px);
     top: -50px;
     left: -50px;
@@ -963,16 +978,16 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 .footer p {
     font-weight: 400;
     font-size: 14px;
-    color: #b8b8b8;
+    color: var(--text-muted);
     letter-spacing: 0.5px;
     margin-top: 20px;
-    z-index: 1;
+    z-index: var(--z-base);
 }
 
 .logo-container {
     display: flex;
     flex-direction: column;
-    align-items: self-start;
+    align-items: flex-start;
     cursor: pointer;
     user-select: none;
 }
@@ -981,15 +996,20 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     font-family: "Centra", sans-serif;
     font-size: 32px;
     font-weight: 900;
-    background: linear-gradient(270deg, #5b5bd6, #7a7af0, #3f3fb3);
+    background: linear-gradient(
+        270deg,
+        var(--accent),
+        var(--accent-light),
+        var(--accent-dark)
+    );
     background-size: 100% 300%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow:
-        0 0 8px rgba(91, 91, 214, 0.6),
-        0 0 16px rgba(122, 122, 240, 0.4);
+        0 0 8px var(--accent-60),
+        0 0 16px var(--accent-40);
 
-    transition: transform 0.3s ease;
+    transition: transform var(--transition-base) ease;
 }
 
 .logo-animated:hover {
